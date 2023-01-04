@@ -4,6 +4,13 @@ let handleHelloWorld = async (req, res) => {
     });
 };
 
+let getHomePage = (req, res) => {
+    return res.render("homepage.ejs", {
+        errors: req.flash("errors")
+    });
+};
+
 module.exports = {
     handleHelloWorld: handleHelloWorld,
+    getHomePage: getHomePage
 };

@@ -52,7 +52,7 @@ let findUserById = (id) => {
     return new Promise((resolve, reject) => {
         try {
             DBConnection.query(
-                ' SELECT * FROM `users` WHERE `id` = ?  ', id,
+                ' SELECT * FROM `users` WHERE `idusers` = ?  ', id,
                 function(err, rows) {
                     if (err) {
                         reject(err)
