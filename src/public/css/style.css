@@ -15,3 +15,34 @@
     height: 500px;
     border-radius: 60px;
 }
+
+h2 {
+    font-family: "TrashHand", "Ink Free", serif;
+    font-size: 80px;
+    color: #5c3725;
+
+}
+
+.butcontainer {
+    position: relative;
+}
+
+.centerH2 {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.input-field {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.row .col.s6 {
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}

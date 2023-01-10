@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {
+          background-image: url("https://media.istockphoto.com/id/1191001701/photo/popcorn-and-clapperboard.jpg?s=612x612&w=0&k=20&c=iUkFTVuU8k-UCcZDxczTWs6gkRa0nAMihp2Jf_2ASKM=");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+    </style>
     <title>Home page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +20,26 @@
 <body>
 <div class="container">
     <div class="container mt-5">
-        <h1>HomePage - Hello world</h1>
-        <div>
-            <h2> Welcome "<%= user.fullname%>"</h2>
+        <div class="butcontainer">
+            <div class="centerH2">
+                <h2><p class="text-white">MovieLand</p></h2>
+            </div>
+            <br>
+            <h4><p class="text-white">Search By Name</p></h4>
+            <nav class="navbar navbar-light bg-light">
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="type any movie name..." aria-label="Search">
+                  <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+
+
+
+            <br>
             <br>
             <div>
                 <form method="POST" action="/logout">
-                    <button type="submit" class="btn btn-primary">Log out</button>
+                    <button type="submit" class="btn btn-dark">Log out</button>
                 </form>
             </div>
         </div>
