@@ -26,6 +26,8 @@ let initWebRoutes = (app) => {
     router.post("/register", auth.validateRegister, registerController.createNewUser);
     router.post("/logout", loginController.postLogOut);
 
+    router.post("/searchByName", loginController.checkLoggedIn, homePageController.findMovieByName);
+
 
     return app.use("/", router);
 

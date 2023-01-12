@@ -27,16 +27,42 @@
             <br>
             <h4><p class="text-white">Search By Name</p></h4>
             <nav class="navbar navbar-light bg-light">
-                <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="type any movie name..." aria-label="Search">
-                  <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline" method="POST" action="/searchByName">
+                    <input id="searchname" name="searchname" class="form-control mr-sm-2" type="search" placeholder="type any movie name..." aria-label="Search">
+                    <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </nav>
 
 
 
+
             <br>
             <br>
+
+            <table id="table" class="styled-table">
+                <thead>
+                    <tr>
+                        <th>movie ID</th>
+                        <th>movie Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% searchbyname.forEach(function(row) { %>
+                        <tr>
+                            <td><%= row.id%></td>
+                            <td><%= row.name%></td>                   
+                            <td>
+                                <button onclick="window.open('/login/')">Go to Movie Page</button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+
+
+
+
+
             <div>
                 <form method="POST" action="/logout">
                     <button type="submit" class="btn btn-dark">Log out</button>
