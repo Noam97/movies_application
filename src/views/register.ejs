@@ -10,12 +10,10 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-7 login-left">
-            </div>
-            <div class="col-5 mt-2">
+<div class="text-center">
+    <h1 class="display-4">Register to MovieLand</h1>
+</div>
+<div class="container1">
                 <div>
                     <% if(errors != "") { %>
                         <% errors.forEach((item) => { %>
@@ -28,38 +26,66 @@
                 <form method="POST" action="/register">
                     <div class="form-group">
                         <label for="fullName">Full name:</label>
+                                                <center>
+                                                              <div class="label">
+
                         <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Full name">
+                        </div>
+                                                                        </center>
+
                     </div>
                     <div class="form-group">
                         <label for="email">Email address: (*)</label>
+                                                                        <center>
+                                                                    <div class="label">
+
+
                         <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
+                        </div>
+                        </center>
                     </div>
                     <div class="form-group">
                         <label for="age">Age: (*)</label>
+                                                                                               <center>
+                                                                                      <div class="label">
+
+
+
                         <input type="number" name="age" class="form-control" id="age" placeholder="Enter your age" required>
+                        </div>
+                        </center>
                     </div>
                     <div class="form-group">
                         <label for="password">Password: (*)</label>
+                                                                                                <center>
+                                                                                         <div class="label">
+
+
+
                         <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                        </div>
+
+                        </center>
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirmation">Confirm password: (*)</label>
+                                                                                                <center>
+                                                                                                <div class="label">
+
+
                         <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" required>
+                        </div>
+                        </center>
                     </div>
+<center>
                     <button type="submit" class="btn btn-primary">Register</button>
+                                            </center>
                 </form>
 
                 <hr>
-                <div>
+                <div class="already">
                     If you already have had an account. <a href="/login">Log in</a>.
                 </div>
-                <div>
-                    Return to <a href="/">Home Page</a>
-                </div>
-                <br><br>
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 </html>

@@ -1,3 +1,28 @@
+body {
+    background-image: url("https://www.levhamakom.co.il/html5/web/4454/38141ImageFile2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.form-group {
+    text-align: center;
+    color: orange;
+}
+
+.already {
+    text-align: center;
+    position: center;
+    color:orange; 
+}
+
+.label {
+    position: relative;
+    width: 400px;
+}
+
+
 .red {
     border: 1px solid red;
 }
@@ -6,26 +31,28 @@
     border: 1px solid green;
 }
 
-.login-left {
-    background-image: url("https://media.istockphoto.com/id/1191001701/photo/popcorn-and-clapperboard.jpg?s=612x612&w=0&k=20&c=iUkFTVuU8k-UCcZDxczTWs6gkRa0nAMihp2Jf_2ASKM=");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-    height: 500px;
-    border-radius: 60px;
-}
+
+#.login-left {
+    # background-image: url("https://media.istockphoto.com/id/1191001701/photo/popcorn-and-clapperboard.jpg?s=612x612&w=0&k=20&c=iUkFTVuU8k-UCcZDxczTWs6gkRa0nAMihp2Jf_2ASKM=");
+    # background-position: center center;
+    # background-repeat: no-repeat;
+    #background-size: cover;
+    #box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+    #height: 500px;
+    #border-radius: 60px;
+    #
+#}
 
 h2 {
     font-family: "TrashHand", "Ink Free", serif;
     font-size: 80px;
     color: #5c3725;
-
 }
 
 .butcontainer {
     position: relative;
 }
+
 
 .centerH2 {
     margin: 0;
