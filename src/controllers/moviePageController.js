@@ -1,10 +1,12 @@
 import moviePageService from "../services/moviePageService";
 
 
-let getMovieInfo = async (req, res) => {
+let getMovieDetails = async (req, res) => {
     try {
-       let p = await moviePageService.getMovieInfo(req.params.movieid)
-        console.log(p)
+        moviePageService.getMovieInfo(req.params.movieid).then(arr => {
+            if (arr[0] || arr[1] || arr[2])
+                console.log(arr)
+        })
     } catch (err) {
         console.log(err);
         req.flash("errors", err);
@@ -13,5 +15,5 @@ let getMovieInfo = async (req, res) => {
 }
 
 module.exports = {
-    getMovieInfo: getMovieInfo
+    getMovieDetails: getMovieDetails
 };
