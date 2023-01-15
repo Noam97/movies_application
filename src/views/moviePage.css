@@ -1,0 +1,77 @@
+.box {
+    text-align: center;
+}
+
+.button {
+    font-size: 1em;
+    padding: 15px 35px;
+    color: antiquewhite;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    background: #ffd800;
+    border-radius: 50px;
+}
+
+.overlay {
+
+    border-width: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.wrapper {
+    background-image: url("https://t4.ftcdn.net/jpg/02/86/32/35/360_F_286323508_DjuYP4teuHiGfak7O2h69K9ray2ePFtT.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 70px auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.wrapper h2 {
+    margin-top: 0;
+}
+
+.wrapper .close {
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    transition: all 200ms;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.wraper .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+.container {
+    border-radius: 5px;
+    padding: 20px 0;
+}
+
+form label {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
