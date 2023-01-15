@@ -7,13 +7,13 @@
 
     <title>Movie details</title>
 
-    <link rel="stylesheet" href="moviePage.css">
-    <link rel="stylesheet" href="moviePageSecond.css">
-
-
-
-
-    <script src="page.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/css/moviePage.css">
+    <link rel="stylesheet" href="/views/moviePageSecond.css">
+    <script> function getScore() {
+            var score = document.querySelector('input[name="rate"]:checked').value;
+            alert(score + 'was selected!')
+        }
+    </script>
 
 
 
@@ -30,7 +30,7 @@
         -->
 
     <div class="box">
-        <a href="#divOne" class=""button">Contact us</a>
+        <a href="#divOne" class="button">Contact us</a>
     </div>
     <div class="overlay" id="divOne">
         <div class="wrapper">
@@ -42,7 +42,7 @@
 
 
                             <center>
-                                <h2>Movie Page</h2>
+                                <h2>"<%= movieName.name %>"</h2>
                             </center>
 
                             <img align="left" src="https://storage.googleapis.com/afs-prod/media/e53811360eed4b8ba26b5f635d703a7c/3000.jpeg

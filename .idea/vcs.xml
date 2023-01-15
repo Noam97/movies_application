@@ -4,6 +4,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/dataBase" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/movies" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/movies_application" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pythonProject7" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pythonProject7/dataBase" vcs="Git" />
   </component>

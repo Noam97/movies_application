@@ -2,7 +2,6 @@ import DBConnection from "./../configs/DBConnection";
 import bcrypt from "bcryptjs";
 
 let findMovieByName = (str) => {
-    console.log(str);
     const findMovieByName = "SELECT id,name FROM movie WHERE name LIKE ? "
     return new Promise((resolve, reject) => {
         try {

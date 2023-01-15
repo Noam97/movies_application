@@ -5,6 +5,14 @@
 import csv
 import mysql.connector
 
+cnx = mysql.connector.connect(user='root', password='123456',
+                              host='127.0.0.1',
+                              port = "2589",
+                              database = "dbexample")
+
+
+cursor = cnx.cursor()
+
 """Create tables"""
 
 # cursor.execute("CREATE TABLE `basictable` (\
@@ -41,15 +49,10 @@ import mysql.connector
 # ) ENGINE=InnoDB AUTO_INCREMENT=1048603 DEFAULT CHARSET=latin1")
 
 
-cnx = mysql.connector.connect(user='root', password='123456',
-                              host='127.0.0.1',
-                              port = "2589",
-                              database = "dbexample")
 
 """Delete tables"""
-cursor = cnx.cursor()
 # try:
-#     cursor.execute("delete from imbdtitleakas")
+#     cursor.execute("delete from ratingtable")
 # except mysql.connector.Error as err:
 #     print("Failed creating database: {}".format(err))
 
@@ -87,11 +90,11 @@ cursor = cnx.cursor()
 #         # if counter == 10:
 #         #     break
 #         try:
-#             cursor.execute("insert into ratingtable(averagerating,numvotes) values(%s, %s);", (row[1],row[2]))
+#             cursor.execute("insert into ratingtable(movieid, averagerating,numvotes) values(%s,%s, %s);", (row[0],row[1],row[2]))
 #         except mysql.connector.Error as err:
 #             print("Failed creating database: {}".format(err))
-# cnx.commit()
-# cursor = cnx.cursor()
+#     cnx.commit()
+#     cursor = cnx.cursor()
 
 # with open("ImdbName.csv", 'r' , encoding = "utf8") as file:
 #   next(iter(file))
@@ -108,9 +111,11 @@ cursor = cnx.cursor()
 #     except mysql.connector.Error as err:
 #         print("Failed creating database: {}".format(err))
 
-cnx.commit()
-cursor = cnx.cursor()
+# cnx.commit()
+# cursor = cnx.cursor()
 
+
+#region not relevant
 # with open("ImdbTitleAkas.csv", 'r' , encoding = "utf8") as file:
 #     next(iter(file))
 #     csvreader = csv.reader(file)
