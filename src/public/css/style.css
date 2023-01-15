@@ -1,20 +1,30 @@
+.login {
+    padding: 70px 0;
+    border: 3px;
+    text-align: center;
+}
+
 body {
-    background-image: url("https://www.levhamakom.co.il/html5/web/4454/38141ImageFile2.jpg");
+    background-image: url("https://t4.ftcdn.net/jpg/02/86/32/31/360_F_286323187_mDk3N4nGDaPkUmhNcdBe3RjSOfKqx4nZ.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
+.display-4 {
+    color: white;
+}
+
 .form-group {
     text-align: center;
-    color: orange;
+    color: black;
 }
 
 .already {
     text-align: center;
     position: center;
-    color:orange; 
+    color:black; 
 }
 
 .label {

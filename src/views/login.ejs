@@ -10,48 +10,48 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<div class="text-center">
-    <h1 class="display-4">Welcome to MovieLand</h1>
-</div>
-  
-                <div>
-                    <% if(errors != "") { %>
-                        <% errors.forEach((item) => { %>
-                            <div class="alert alert-danger">
-                                <%- item %>
-                            </div>
-                        <% }); %>
-                    <% } %>
-                </div>
-                <form method="POST" action="/login">
-                    <div class="form-group">
-                        <label for="email">Email address:</label>
-                             <center>
-                                                                                                <div class="label">
-                        <input type="email" class="form-control" id="email" name="email"  placeholder="Enter email" required>
-                        </div>
-                        </center>
+    <div class="text-center">
+        <h1 class="display-4">Welcome to MovieLand</h1>
+    </div>
+    <div class="login">
+
+        <div>
+            <% if(errors != "") { %>
+            <% errors.forEach((item) => { %>
+            <div class="alert alert-danger">
+                <%- item %>
+            </div>
+            <% }); %>
+            <% } %>
+        </div>
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <center>
+                    <div class="label">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                             <center>
-                                                                                                <div class="label">
+                </center>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <center>
+                    <div class="label">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                        </div>
-                        </center>
                     </div>
-                    <center>
-                    <button type="submit" class="btn btn-primary">Log in</button>
-                    </center>
-                </form>
+                </center>
+            </div>
+            <center>
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </center>
+        </form>
 
-                <hr>
-                <div>
-                                <div class="already">
+        <hr>
+        <div class="already">
 
-                    If you haven't had an account. <a href="/register">Create a new account</a>.
-                                    <div class="already">
+            If you haven't had an account. <a href="/register">Create a new account</a>.
+        </div>
+    </div>
 
-                </div>
 </body>
 </html>
