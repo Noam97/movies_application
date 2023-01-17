@@ -1,10 +1,11 @@
 import express from "express";
 import homePageController from "../controllers/homePageController";
 import registerController from "../controllers/registerController";
-import loginController from "../controllers/loginController";
+import loginController, {checkLoggedIn} from "../controllers/loginController";
 import auth from "../validation/authValidation";
 import passport from "passport";
 import initPassportLocal from "../controllers/passportLocalController";
+import moviePageController from "../controllers/moviePageController";
 
 // Init all passport
 initPassportLocal();
@@ -28,6 +29,7 @@ let initWebRoutes = (app) => {
 
     router.post("/searchByName", loginController.checkLoggedIn, homePageController.findMovieByName);
     router.get("/getRecommended", loginController.checkLoggedIn, homePageController.getRecommended);
+    router.get("/moviepage/:movieid",loginController.checkLoggedIn, moviePageController.getMovieDetails);
 
     return app.use("/", router);
 

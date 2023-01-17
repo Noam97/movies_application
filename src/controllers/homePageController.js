@@ -1,17 +1,9 @@
 import homePageService from "../services/homePageService";
 
-let rename = (recipe) => {
-    recipe = recipe.replace(/\(/g, "");
-    recipe = recipe.replace(/\)/g, "");
-    recipe = recipe.replace(/&/g, "");
-    recipe = recipe.replace(/;/g, "");
-    return recipe;
-}
 
 let findMovieByName = async (req, res) => {
     try {
         await homePageService.findMovieByName(req.body.searchname).then(async (rows) => {
-            console.log(rows);
             res.render("homepage.ejs", {searchbyname: rows})
             // let ans = JSON.stringify(rows);
             // return res.send(rename(ans));
