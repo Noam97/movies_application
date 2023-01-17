@@ -23,22 +23,41 @@ let findMovieByName = async (req, res) => {
     }
 }
 
+let getRecommended = async (req, res) => {
+    try {
+        await homePageService.getRecommended().then(async (rows) => {
+            console.log(rows);
+            res.render("homepage.ejs", {recommended: rows})
+            // let ans = JSON.stringify(rows);
+            // return res.send(rename(ans));
+        });
+    } catch (err) {
+        console.log(err);
+        req.flash("errors", err);
+        return res.redirect("/login");
+    }
+}
+
+
 let handleHelloWorld = async (req, res) => {
     return res.render("homepage.ejs",{
         user: req.user,
-        searchbyname: []
+        searchbyname: [],
+        recommended: []
     });
 };
 
 let getHomePage = (req, res) => {
     return res.render("homepage.ejs", {
         errors: req.flash("errors"),
-        searchbyname: []
+        searchbyname: [],
+        recommended: []
     });
 };
 
 module.exports = {
     handleHelloWorld: handleHelloWorld,
     getHomePage: getHomePage,
-    findMovieByName: findMovieByName
+    findMovieByName: findMovieByName,
+    getRecommended: getRecommended
 };

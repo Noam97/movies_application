@@ -27,7 +27,7 @@ let initWebRoutes = (app) => {
     router.post("/logout", loginController.postLogOut);
 
     router.post("/searchByName", loginController.checkLoggedIn, homePageController.findMovieByName);
-
+    router.get("/getRecommended", loginController.checkLoggedIn, homePageController.getRecommended);
 
     return app.use("/", router);
 
