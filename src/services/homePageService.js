@@ -51,7 +51,8 @@ let getBestPlayer = (str) => {
     var name2 = myArray[1];
     console.log(name1);
     console.log(name2);
-    const findBestPlayer = "SELECT playerid, AVG(averagerating) as playerrating FROM knownfor JOIN ratingtable WHERE knownfor.movieid = ratingtable.movieid and (playerid= "+name1+" or playerid="+name2+") GROUP BY (playerid);"
+    const findBestPlayer = "SELECT playerid, AVG(averagerating) as playerrating FROM knownfor JOIN ratingtable WHERE knownfor.movieid = ratingtable.movieid and (playerid= '"+name1+"' or playerid='"+name2+"') GROUP BY (playerid);"
+    console.log(findBestPlayer);
     return new Promise((resolve, reject) => {
         try {
             DBConnection.query(
@@ -69,8 +70,33 @@ let getBestPlayer = (str) => {
     });
 };
 
+
+
+let highestGenre = (str) => {
+    console.log(str);
+    const findHighestGenre = "SELECT averagerating, name FROM dbexample.movie JOIN dbexample.ratingtable WHERE dbexample.movie.movieid = dbexample.ratingtable.movieid and genre LIKE '%"+str+"%' ORDER BY averagerating DESC LIMIT 1;"
+    return new Promise((resolve, reject) => {
+        try {
+            DBConnection.query(
+                findHighestGenre, str,
+                function (err, rows) {
+                    if (err) {
+                        reject(err)
+                    }
+                    resolve(rows);
+                }
+            );
+        } catch (err) {
+            reject(err);
+        }
+    });
+};
+
+
+
 module.exports = {
     findMovieByName: findMovieByName,
     getRecommended: getRecommended,
-    getBestPlayer: getBestPlayer
+    getBestPlayer: getBestPlayer,
+    highestGenre: highestGenre
 };

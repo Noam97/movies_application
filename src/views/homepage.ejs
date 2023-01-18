@@ -13,13 +13,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <%var searchbyname;%>
 <%var recommended;%>
 <%var bestplayer;%>
+<%var highestgenre;%>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <form method="POST" action="/logout">
@@ -45,9 +46,9 @@
         <div class="container">
             <div class="container mt-5">
                 <div class="butcontainer">
-                    <div class="centerH2">
-                        <h2><p class="text-white">MovieLand</p></h2>
-                    </div>
+                        <center>
+                            <h2><p class="text-white">MovieLand</p></h2>
+                        </center>
                     <br>
                     <h4><p class="text-white">Search By Name</p></h4>
                     <span>
@@ -109,6 +110,41 @@
                             <input id="playernames" name="playernames" class="form-control mr-sm-2" type="search" placeholder="type 2 players..." aria-label="Search">
                             <button class="btn btn-danger my-2 my-sm-0" type="submit">Compare</button>
                         </form>
+                    <% } %>
+
+
+                    
+                    <h3><p class="text-white">Choose a Genre:</p></h3>
+                    <form class="form-inline" method="POST" action="/highestGenre">
+                        <input id="highestid" name="highestid" class="form-control mr-sm-2" type="search" placeholder="type any Genre..." aria-label="Search">
+                        <button class="btn btn-danger my-2 my-sm-0" type="submit">Choose</button>
+                    </form>
+                    <!-- <% if (highestgenre != null) { %>
+                        <% highestgenre.forEach(function(result) { %>
+                            
+                            The movie with the hightest average rating is: <%= result.name%>
+                                with the average rating: <%= result.averagerating%>                   
+                            
+                        <% }) %>
+
+                    <% } %> -->
+                    <% if (highestgenre != null) { %>
+                        <table id="table" class="table table-striped table-dark">
+                            <thead>
+                                <tr>
+                                    <th>The movie with the hightest average rating</th>
+                                    <th> The Average Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% highestgenre.forEach(function(result) { %>
+                                        <tr>
+                                            <td><%= result.name%></td>
+                                            <td><%= result.averagerating%></td>                   
+                                        </tr>
+                                    <% }) %>    
+                            </tbody>
+                        </table>
                     <% } %>
                 </div>
             </div>

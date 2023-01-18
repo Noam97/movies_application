@@ -47,13 +47,30 @@ let getBestPlayer = async (req, res) => {
 }
 
 
+let highestGenre = async (req, res) => {
+    try {
+        await homePageService.highestGenre(req.body.highestid).then(async (rows) => {
+            res.render("homepage.ejs", {highestgenre: rows})
+            // let ans = JSON.stringify(rows);
+            // return res.send(rename(ans));
+        });
+    } catch (err) {
+        console.log(err);
+        req.flash("errors", err);
+        return res.redirect("/login");
+    }
+}
+
+
+
 
 let handleHelloWorld = async (req, res) => {
     return res.render("homepage.ejs",{
         user: req.user,
         searchbyname: [],
         recommended: [],
-        bestplayer: []
+        bestplayer: [],
+        highestgenre: []
     });
 };
 
@@ -62,7 +79,8 @@ let getHomePage = (req, res) => {
         errors: req.flash("errors"),
         searchbyname: [],
         recommended: [],
-        bestplayer: []
+        bestplayer: [],
+        highestgenre: []
     });
 };
 
@@ -71,5 +89,6 @@ module.exports = {
     getHomePage: getHomePage,
     findMovieByName: findMovieByName,
     getRecommended: getRecommended,
-    getBestPlayer: getBestPlayer
+    getBestPlayer: getBestPlayer,
+    highestGenre: highestGenre
 };
