@@ -15,6 +15,20 @@ let getMovieDetails = async (req, res) => {
         return res.redirect("/homepage");
     }
 }
+/*
+let userComment = async (req, res) => {
+    try {
+        moviePageService.addCommentsOfUser(req).then(sql_res => {
+            console.log(req.comments)
+            res.render("moviePage.ejs")
+        })
+    } catch (err) {
+        console.log(err);
+        req.flash("errors", err);
+        return res.redirect("/homepage");
+    }
+}
+*/
 
 module.exports = {
     getMovieDetails: getMovieDetails

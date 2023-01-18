@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 
 let findMovieByName = (str) => {
     console.log(str);
-    const findMovieByName = "SELECT id,name FROM movie WHERE name LIKE '% "+
+    const findMovieByName = "SELECT id,name, movieid FROM movie WHERE name LIKE '% "+
                             str+" %' OR name LIKE '% "+
                             str+"' OR name LIKE '"+
                             str+" %' OR name LIKE '"+str+"' "
