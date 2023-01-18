@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <link rel="stylesheet" href="/css/homePage.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -22,6 +22,16 @@
 <%var bestplayer;%>
 <%var highestgenre;%>
     <body>
+        <!-- <script>
+            function myFunction() {
+              var x = document.getElementById("namestable");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
+        </script> -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <form method="POST" action="/logout">
                 <button type="submit" class="btn btn-dark">Log out</button>
@@ -55,34 +65,38 @@
                         <!-- <nav class="navbar navbar-light bg-light"> -->
                             <form class="form-inline" method="POST" action="/searchByName">
                                 <input id="searchname" name="searchname" class="form-control mr-sm-2" type="search" placeholder="type any movie name..." aria-label="Search">
-                                <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+                                <button class="btn btn-danger my-2 my-sm-0" type="submit" onclick="myFunction()">
+                                    Search
+                                </button>
                             </form>
                         <!-- </nav> -->
                     </span>
                     <br>
-                    <br>  
-                    <% if (searchbyname != null) { %>
-                        <table id="table" class="table table-striped table-dark">
-                            <thead>
-                                <tr>
-                                    <th>movie ID</th>
-                                    <th>movie Name</th>
-                                    <th>Link</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                   <% searchbyname.forEach(function(row) { %>
-                                        <tr>
-                                            <td><%= row.id%></td>
-                                            <td><%= row.name%></td>                   
-                                            <td>
-                                                <button onclick="window.open('/moviepage/<%=row.movieid%>')">Go to Movie Page</button>
-                                            </td>
-                                        </tr>
-                                    <% }) %>    
-                            </tbody>
-                        </table>
-                    <% } %>
+                    <br> 
+                    <!-- <div id="namestable" style="display: none;">  -->
+                        <% if (searchbyname != null) { %>
+                            <table id="table" class="table table-striped table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>movie ID</th>
+                                        <th>movie Name</th>
+                                        <th>Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% searchbyname.forEach(function(row) { %>
+                                            <tr>
+                                                <td><%= row.id%></td>
+                                                <td><%= row.name%></td>                   
+                                                <td>
+                                                    <button onclick="window.open('/moviepage/<%=row.movieid%>')">Go to Movie Page</button>
+                                                </td>
+                                            </tr>
+                                        <% }) %>    
+                                </tbody>
+                            </table>
+                        <% } %>
+                    <!-- </div> -->
                     <% if (recommended != null) { %>
                         <h3><p class="text-white">Recommended Movies</p></h3>
                         <table id="table" class="table table-striped table-dark">

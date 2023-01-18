@@ -15,6 +15,7 @@
         function getScore() {
             var score = document.querySelector('input[name="rate"]:checked').value;
             alert(score + 'was selected!')
+            
         }
     </script>
 </head>
@@ -82,8 +83,8 @@
                                     </div>
                                     <h4> Please rate me: </h4>
 
-                                    <form method="post" onsubmit="getScore()" action="/moviepage/<%=movieId%>">
-
+                                    <!-- <form method="post" action="/moviepage/<%=movieId%>"> -->
+                                    <form onsubmit="getScore()">
                                         <div class="rate">
                                             <input type="radio" id="star10" name="rate" value="10" />
                                             <label for="star10" title="text">10 stars</label>

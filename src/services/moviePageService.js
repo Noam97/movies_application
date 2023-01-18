@@ -20,6 +20,30 @@ let addCommentsOfUser = (data) => {
     });
 }
 
+
+
+let addRatingOfUser = (str) => {
+    console.log(str);
+    const addRating = "INSERT INTO dbexample.rating (rate, Movie_ID) VALUES (7, 3);"
+    return new Promise((resolve, reject) => {
+        try {
+            DBConnection.query(
+                addRating, str,
+                function (err, rows) {
+                    if (err) {
+                        reject(err)
+                    }
+                    resolve(rows);
+                }
+            );
+        } catch (err) {
+            reject(err);
+        }
+    });
+};
+
+
+
 let getMovieInfo = (id) => {
     const playersInMovie = "SELECT name, birthyear, deathyear FROM player JOIN knownfor WHERE player.playerid = knownfor.playerid and knownfor.movieid = ? "
     const movieName = "SELECT name, genre, movieid FROM movie WHERE movie.movieid = ?"
@@ -105,5 +129,6 @@ let getMovieInfo = (id) => {
 };
 
 module.exports = {
-    getMovieInfo: getMovieInfo
+    getMovieInfo: getMovieInfo,
+    addRatingOfUser: addRatingOfUser
 };
