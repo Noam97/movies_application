@@ -5,11 +5,17 @@
 }
 
 body {
-    background-image: url("https://media.istockphoto.com/id/1191001701/photo/popcorn-and-clapperboard.jpg?s=612x612&w=0&k=20&c=iUkFTVuU8k-UCcZDxczTWs6gkRa0nAMihp2Jf_2ASKM=");
+    background-image: url("https://t3.ftcdn.net/jpg/05/07/67/78/360_F_507677881_lwsOUToBTTOk0mHHPhyudfK4BGS9LGO1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+
+}
+
+.container1{
+    padding-left: 350px;
+    padding-top: 180px;
 }
 
 .display-4 {
@@ -17,13 +23,10 @@ body {
 }
 
 .form-group {
-    text-align: center;
     color: black;
 }
 
 .already {
-    text-align: center;
-    position: center;
     color:black;
 }
 
@@ -84,3 +87,7 @@ h2 {
     right: auto;
 }
 
+.field{
+  font-weigh: bold ;
+    font-size: 25px;
+}

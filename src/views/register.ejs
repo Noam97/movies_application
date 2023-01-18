@@ -11,9 +11,9 @@
 </head>
 <body>
 <div class="text-center">
-    <h1 class="display-4">Register to MovieLand</h1>
+    <h1 class="display-4"><br>Register to MovieLand</h1>
 </div>
-    <center>
+
 <div class="container1">
                 <div>
                     <% if(errors != "") { %>
@@ -26,39 +26,39 @@
                 </div>
                 <form method="POST" action="/register">
                     <div class="form-group">
-                        <label for="fullName">Full name:</label>
-                                                <center>
+                        <label  for="fullName" class = "field">Full name:</label>
+
                                                               <div class="label">
 
                         <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Full name">
                         </div>
-                                                                        </center>
+
 
                     </div>
                     <div class="form-group">
-                        <label for="email">Email address: (*)</label>
-                                                                        <center>
+                        <label for="email" class = "field">Email address: (*) </label>
+
                                                                     <div class="label">
 
 
                         <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
                         </div>
-                        </center>
+
                     </div>
                     <div class="form-group">
-                        <label for="age">Age: (*)</label>
-                                                                                               <center>
+                        <label for="age" class = "field">Age: (*)</label>
+
                                                                                       <div class="label">
 
 
 
                         <input type="number" name="age" class="form-control" id="age" placeholder="Enter your age" required>
                         </div>
-                        </center>
+
                     </div>
                     <div class="form-group">
-                        <label for="password">Password: (*)</label>
-                                                                                                <center>
+                        <label for="password" class = "field">Password: (*)</label>
+
                                                                                          <div class="label">
 
 
@@ -66,21 +66,21 @@
                         <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
                         </div>
 
-                        </center>
+
                     </div>
                     <div class="form-group">
-                        <label for="passwordConfirmation">Confirm password: (*)</label>
-                                                                                                <center>
+                        <label for="passwordConfirmation" class = "field">Confirm password: (*)</label>
+
                                                                                                 <div class="label">
 
 
                         <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" required>
                         </div>
-                        </center>
+
                     </div>
-<center>
+
                     <button type="submit" class="btn btn-primary">Register</button>
-                                            </center>
+
                 </form>
 
                 <hr>
@@ -88,6 +88,6 @@
                     If you already have had an account. <a href="/login">Log in</a>.
                 </div>
 </div>
-        </center>
+
 </body>
 </html>

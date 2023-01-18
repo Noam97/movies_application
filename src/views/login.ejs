@@ -11,10 +11,9 @@
 </head>
 <body>
     <div class="text-center">
-        <h1 class="display-4">Welcome to MovieLand</h1>
+        <h1 class="display-4"><br>Welcome to MovieLand</h1>
     </div>
-    <div class="login">
-
+    <div class="container1">
         <div>
             <% if(errors != "") { %>
             <% errors.forEach((item) => { %>
@@ -26,24 +25,18 @@
         </div>
         <form method="POST" action="/login">
             <div class="form-group">
-                <label for="email">Email address:</label>
-                <center>
+                <label for="email" class = "field">Email address:</label>
                     <div class="label">
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
                     </div>
-                </center>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <center>
+                <label for="password" class = "field">Password:</label>
                     <div class="label">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                     </div>
-                </center>
             </div>
-            <center>
                 <button type="submit" class="btn btn-primary">Log in</button>
-            </center>
         </form>
 
         <hr>
