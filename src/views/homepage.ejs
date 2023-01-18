@@ -19,6 +19,7 @@
 </head>
 <%var searchbyname;%>
 <%var recommended;%>
+<%var bestplayer;%>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <form method="POST" action="/logout">
@@ -31,9 +32,11 @@
                         <img src="https://freesvg.org/img/1289679474.png" width="25" height="25">
                     </button>
                 </form>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                <form class="form-inline" method="post" action="/getBestPlayer">
+                    <button type="submit" class="btn btn-dark">
+                        <img src="https://media.istockphoto.com/id/486816900/vector/people-icon-on-a-black-background.jpg?s=170667a&w=0&k=20&c=RlVm2Z2gG09O5DR2xSKuMXlwBN_Z0spP-zdmfquz3es=" width="25" height="25">
+                    </button>
+                </form>
               </div>
             </div>
         </nav>
@@ -48,12 +51,12 @@
                     <br>
                     <h4><p class="text-white">Search By Name</p></h4>
                     <span>
-                        <nav class="navbar navbar-light bg-light">
+                        <!-- <nav class="navbar navbar-light bg-light"> -->
                             <form class="form-inline" method="POST" action="/searchByName">
                                 <input id="searchname" name="searchname" class="form-control mr-sm-2" type="search" placeholder="type any movie name..." aria-label="Search">
                                 <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
                             </form>
-                        </nav>
+                        <!-- </nav> -->
                     </span>
                     <br>
                     <br>  
@@ -100,7 +103,13 @@
                         </table>
                     <% } %>
 
-
+                    <% if (bestplayer != null) { %>
+                        <h3><p class="text-white">Compare 2 Players</p></h3>
+                        <form class="form-inline" method="POST" action="/getBestPlayer">
+                            <input id="playernames" name="playernames" class="form-control mr-sm-2" type="search" placeholder="type 2 players..." aria-label="Search">
+                            <button class="btn btn-danger my-2 my-sm-0" type="submit">Compare</button>
+                        </form>
+                    <% } %>
                 </div>
             </div>
         </div>

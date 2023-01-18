@@ -55,7 +55,7 @@ let getBestPlayer = (str) => {
     return new Promise((resolve, reject) => {
         try {
             DBConnection.query(
-                findBestPlayer,
+                findBestPlayer, 
                 function (err, rows) {
                     if (err) {
                         reject(err)
