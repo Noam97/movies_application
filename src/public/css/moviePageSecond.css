@@ -20,7 +20,7 @@
 }
 
 h2 {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Tahoma', Times, serif;
     font-size: 27px;
     color: white;
     height: 0px;
@@ -81,15 +81,19 @@ h2 {
 }
 
 h3 {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Tahoma,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-size: 30px;
     padding-bottom: 40px;
 }
 
 h4 {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Tahoma,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-size: 20px;
 }
+h5 {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Tahoma,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
 
 .btn, .btn-large, .btn-small {
     text-decoration: none;
@@ -132,7 +136,7 @@ button, input {
 }
 
 button, input, optgroup, select, textarea {
-    font-family: sans-serif;
+    font-family: Tahoma;
     font-size: 100%;
     line-height: 1.15;
     margin: 0;
@@ -194,6 +198,15 @@ button, input, optgroup, select, textarea {
     cursor: pointer;
 }
 
-
-
+th{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Tahoma,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+td{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Tahoma,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.subTitles{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Tahoma,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 25px;
+    color:red;
+}
 

@@ -21,8 +21,8 @@ let addCommentsOfUser = (data) => {
 }
 
 let getMovieInfo = (id) => {
-    const playersInMovie = "SELECT name FROM player JOIN knownfor WHERE player.playerid = knownfor.playerid and knownfor.movieid = ? "
-    const movieName = "SELECT name FROM movie WHERE movie.movieid = ?"
+    const playersInMovie = "SELECT name, birthyear, deathyear FROM player JOIN knownfor WHERE player.playerid = knownfor.playerid and knownfor.movieid = ? "
+    const movieName = "SELECT name, genre, movieid FROM movie WHERE movie.movieid = ?"
     const movieInfo = "SELECT averagerating, numvotes FROM ratingtable WHERE ratingtable.movieid = ? "
     // const comments = "SELECT comment FROM rating WHERE raiting.movieid = ?"
     console.log(id)
@@ -31,7 +31,6 @@ let getMovieInfo = (id) => {
             DBConnection.query(
                 playersInMovie, id,
                 function (err, rows) {
-                    console.log(rows)
                     if (err) {
                         console.log(err)
                         reject(err)
@@ -49,12 +48,11 @@ let getMovieInfo = (id) => {
             DBConnection.query(
                 movieInfo, id,
                 function (err, rows) {
-                    console.log(rows)
                     if (err) {
                         console.log(err)
                         reject(err)
                     }
-                    resolve(rows);
+                    resolve(rows[0]);
                 }
             );
         } catch (err) {
@@ -67,12 +65,11 @@ let getMovieInfo = (id) => {
             DBConnection.query(
                 movieName, id,
                 function (err, rows) {
-                    console.log(rows)
                     if (err) {
                         console.log(err)
                         reject(err)
                     }
-                    resolve(rows);
+                    resolve(rows[0]);
                 }
             );
         } catch (err) {

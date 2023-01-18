@@ -20,12 +20,8 @@
 </head>
 <body>
 <br>
-<!-- option to do logout button that will navigate to login page:
-<button onclick="window.location.href='login.html'">Logout</button>
-    -->
-
 <div class="box">
-    <a href="#divOne" class="button">Contact us</a>
+    <a href="#divOne" class="button">Click Here</a>
 </div>
 <div class="overlay" id="divOne">
     <div class="wrapper">
@@ -35,31 +31,33 @@
                 <div class="container">
                     <form>
                         <center>
-                            <%console.log(movieName.name) %>
-                            <h2>"<%=movieName.name %>"</h2>
+
+                           <br><br> <h1 style="font-size: 100px; color: Red; font-family: 'Tahoma', Times, serif" ><%=movieName.name %></h1><br>
+                            <h4 style="font-size: 25px;  font-family: 'Tahoma', Times, serif"> genre: <%=movieName.genre%></h4>
                         </center>
 
                         <img align="left" src="https://storage.googleapis.com/afs-prod/media/e53811360eed4b8ba26b5f635d703a7c/3000.jpeg
-" alt="" width="70" height="70">
+" alt="" width="250" height="250">
                         <table style="width: 100%">
                             <tr>
                                 <td style="vertical-align: top;">
                                     <div class="data">
                                         <table>
-                                            <title> Players in the movie <%=movieName.name %></title>
+                                            <caption class = subTitles> <b> Players list:</b>  </caption>
+
                                             <thead>
                                             <tr>
-                                                <th>Player name</th>
-                                                <th>Birth year</th>
-                                                <th>Death year</th>
+                                                <th> Player name</th>
+                                                <th > Birth year</th>
+                                                <th> Death year</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <% players.forEach(function(player) { %>
                                                 <tr>
-                                                    <th><%= player.name %></th>
-                                                    <th><%= player.birthyear %></th>
-                                                    <th><%= player.deathyear %></th>
+                                                    <td> <%= player.name %></td>
+                                                    <td><%= player.birthyear  %>&nbsp;</td>
+                                                    <td><%= player.deathyear %></td>
                                                 </tr>
                                             <% }) %>
                                             </tbody>
@@ -69,22 +67,23 @@
                                 <td>
                                     <div class="row">
 
-                                        <h4> Reviews: </h4>
+                                        <h4 class = subTitles> Reviews: </h4>
                                         <p>
-                                            <%= movieRating.averagerating %>
-                                        <h5> rated by <%=movieRating.numvotes%> users </h5>
+                                          <h4> Average Rating: <%= movieRating.averagerating %> </h4>
+                                        <h5> Rated by <%=movieRating.numvotes%> users </h5>
 
                                         </p>
 
                                         <form action="submit-feedback.php" method="post">
-                                            <textarea id="feedback" name="feedback" placeholder="leave your comment here..."></textarea><br>
+                                            <textarea id="feedback" name="feedback" placeholder="leave your comment here..." style="height:200px; width : 300px"></textarea><br>
 
                                             <input type="submit" value="Submit">
                                         </form>
                                     </div>
-                                    <h5> Please rate me: </h5>
+                                    <h4> Please rate me: </h4>
 
                                     <form method="post" onsubmit="getScore()" action="/moviepage/<%=movieId%>">
+
                                         <div class="rate">
                                             <input type="radio" id="star10" name="rate" value="10" />
                                             <label for="star10" title="text">10 stars</label>
@@ -115,7 +114,9 @@
                                 </td>
 
                                 <td>
-                                    noam
+                                    <div>
+                                   <h4 class = subTitles> Comments: </h4>
+                                    </div>
                                 </td>
 
 
