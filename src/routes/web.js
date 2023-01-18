@@ -30,6 +30,7 @@ let initWebRoutes = (app) => {
     router.post("/searchByName", loginController.checkLoggedIn, homePageController.findMovieByName);
     router.get("/getRecommended", loginController.checkLoggedIn, homePageController.getRecommended);
     router.get("/moviepage/:movieid",loginController.checkLoggedIn, moviePageController.getMovieDetails);
+    router.post("/getBestPlayer", loginController.checkLoggedIn, homePageController.getBestPlayer);
 
     return app.use("/", router);
 

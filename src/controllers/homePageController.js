@@ -31,11 +31,29 @@ let getRecommended = async (req, res) => {
 }
 
 
+let getBestPlayer = async (req, res) => {
+    try {
+        await homePageService.getBestPlayer(req.body.playernames).then(async (rows) => {
+            console.log(rows);
+            res.render("homepage.ejs", {bestplayer: rows})
+            // let ans = JSON.stringify(rows);
+            // return res.send(rename(ans));
+        });
+    } catch (err) {
+        console.log(err);
+        req.flash("errors", err);
+        return res.redirect("/login");
+    }
+}
+
+
+
 let handleHelloWorld = async (req, res) => {
     return res.render("homepage.ejs",{
         user: req.user,
         searchbyname: [],
-        recommended: []
+        recommended: [],
+        bestplayer: []
     });
 };
 
@@ -43,7 +61,8 @@ let getHomePage = (req, res) => {
     return res.render("homepage.ejs", {
         errors: req.flash("errors"),
         searchbyname: [],
-        recommended: []
+        recommended: [],
+        bestplayer: []
     });
 };
 
@@ -51,5 +70,6 @@ module.exports = {
     handleHelloWorld: handleHelloWorld,
     getHomePage: getHomePage,
     findMovieByName: findMovieByName,
-    getRecommended: getRecommended
+    getRecommended: getRecommended,
+    getBestPlayer: getBestPlayer
 };
