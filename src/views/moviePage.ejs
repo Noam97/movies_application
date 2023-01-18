@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <title>Movie details</title>
+
+
+    <link rel="stylesheet" href="/css/moviePage.css">
+    <link rel="stylesheet" href="/css/moviePageSecond.css">
+
+    <script>
+        function getScore() {
+            var score = document.querySelector('input[name="rate"]:checked').value;
+            alert(score + 'was selected!')
+        }
+    </script>
+</head>
+<body>
+<br>
+<!-- option to do logout button that will navigate to login page:
+<button onclick="window.location.href='login.html'">Logout</button>
+    -->
+
+<div class="box">
+    <a href="#divOne" class="button">Contact us</a>
+</div>
+<div class="overlay" id="divOne">
+    <div class="wrapper">
+        <a href="#" class="close">&times;</a>
+        <div class="content">
+            <div class="content">
+                <div class="container">
+                    <form>
+                        <center>
+                            <%console.log(movieName.name) %>
+                            <h2>"<%=movieName.name %>"</h2>
+                        </center>
+
+                        <img align="left" src="https://storage.googleapis.com/afs-prod/media/e53811360eed4b8ba26b5f635d703a7c/3000.jpeg
+" alt="" width="70" height="70">
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <div class="data">
+                                        <table>
+                                            <title> Players in the movie <%=movieName.name %></title>
+                                            <thead>
+                                            <tr>
+                                                <th>Player name</th>
+                                                <th>Birth year</th>
+                                                <th>Death year</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <% players.forEach(function(player) { %>
+                                                <tr>
+                                                    <th><%= player.name %></th>
+                                                    <th><%= player.birthyear %></th>
+                                                    <th><%= player.deathyear %></th>
+                                                </tr>
+                                            <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+
+                                        <h4> Reviews: </h4>
+                                        <p>
+                                            <%= movieRating.averagerating %>
+                                        <h5> rated by <%=movieRating.numvotes%> users </h5>
+
+                                        </p>
+
+                                        <form action="submit-feedback.php" method="post">
+                                            <textarea id="feedback" name="feedback" placeholder="leave your comment here..."></textarea><br>
+
+                                            <input type="submit" value="Submit">
+                                        </form>
+                                    </div>
+                                    <h5> Please rate me: </h5>
+
+                                    <form method="post" onsubmit="getScore()" action="/moviepage/<%=movieId%>">
+                                        <div class="rate">
+                                            <input type="radio" id="star10" name="rate" value="10" />
+                                            <label for="star10" title="text">10 stars</label>
+                                            <input type="radio" id="star9" name="rate" value="9" />
+                                            <label for="star9" title="text">9 stars</label>
+                                            <input type="radio" id="star8" name="rate" value="8" />
+                                            <label for="star8" title="text">8 stars</label>
+                                            <input type="radio" id="star7" name="rate" value="7" />
+                                            <label for="star7" title="text">7 stars</label>
+                                            <input type="radio" id="star6" name="rate" value="6" />
+                                            <label for="star6" title="text">6 stars</label>
+                                            <input type="radio" id="star5" name="rate" value="5" />
+                                            <label for="star5" title="text">5 stars</label>
+                                            <input type="radio" id="star4" name="rate" value="4" />
+                                            <label for="star4" title="text">4 stars</label>
+                                            <input type="radio" id="star3" name="rate" value="3" />
+                                            <label for="star3" title="text">3 stars</label>
+                                            <input type="radio" id="star2" name="rate" value="2" />
+                                            <label for="star2" title="text">2 stars</label>
+                                            <input type="radio" id="star1" name="rate" value="1" />
+                                            <label for="star1" title="text">1 star</label>
+                                        </div>
+                                        <button class="btnS" type="submit" style="font-size:16px"><i class="fa fa-check"></i></button>
+                                    </form>
+                                    <button class="btnD" onclick="window.location.href='deleteRate'" style="font-size:16px"><i class="fa far fa-trash-alt"></i></button>
+
+
+                                </td>
+
+                                <td>
+                                    noam
+                                </td>
+
+
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
