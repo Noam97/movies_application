@@ -111,8 +111,25 @@ let getMovieInfo = (id) => {
 
 
 
+let addCommentsOfUser = (comment) => {
+    console.log(comment)
+    return new Promise(async (resolve, reject) => {
+        DBConnection.query(
+            ' INSERT INTO rating set ? ', comment,
+            function (err, result) {
+                if (err) {
+                    console.log("Error ", err)
+                    reject(false)
+                }
+                resolve("Create a new comment successful");
+            }
+        );
+    });
+}
+
 
 module.exports = {
     getMovieInfo: getMovieInfo,
     addRatingOfUser: addRatingOfUser,
+    addCommentsOfUser:addCommentsOfUser,
 };
