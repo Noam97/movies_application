@@ -1,26 +1,6 @@
 import DBConnection from "./../configs/DBConnection";
 
 
-let addCommentsOfUser = (data) => {
-    return new Promise(async (resolve, reject) => {
-        console.log(data)
-        let comment = {comment: data};
-
-        DBConnection.query(
-            ' INSERT INTO rating set ? ', comment,
-            function (err, rows) {
-                if (err) {
-                    console.log("Error ", err)
-                    reject(false)
-
-                }
-                resolve("Create a new comment successful");
-            }
-        );
-    });
-}
-
-
 
 let addRatingOfUser = (str) => {
     console.log(str);
@@ -48,7 +28,7 @@ let getMovieInfo = (id) => {
     const playersInMovie = "SELECT name, birthyear, deathyear FROM player JOIN knownfor WHERE player.playerid = knownfor.playerid and knownfor.movieid = ? "
     const movieName = "SELECT name, genre, movieid FROM movie WHERE movie.movieid = ?"
     const movieInfo = "SELECT averagerating, numvotes FROM ratingtable WHERE ratingtable.movieid = ? "
-    // const comments = "SELECT comment FROM rating WHERE raiting.movieid = ?"
+    const comments = "SELECT comment FROM rating WHERE rating.movieid = ?"
     console.log(id)
     let playersPromise = new Promise((resolve, reject) => {
         try {
@@ -100,8 +80,8 @@ let getMovieInfo = (id) => {
             console.log(err)
             reject(err);
         }
-    });
-    /*
+    })
+
     let commentsPromise = new Promise((resolve, reject) => {
         try {
             DBConnection.query(
@@ -121,14 +101,18 @@ let getMovieInfo = (id) => {
             console.log(err)
             reject(err);
         }
-    })
-    */
+    });
 
-    return  Promise.all([playersPromise, moviePromise, namesPromise])
+
+    // return  Promise.all([playersPromise, moviePromise, namesPromise])
+    return  Promise.all([playersPromise, moviePromise, namesPromise, commentsPromise])
 
 };
 
+
+
+
 module.exports = {
     getMovieInfo: getMovieInfo,
-    addRatingOfUser: addRatingOfUser
+    addRatingOfUser: addRatingOfUser,
 };

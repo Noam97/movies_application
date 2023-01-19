@@ -10,13 +10,20 @@
 
     <link rel="stylesheet" href="/css/moviePage.css">
     <link rel="stylesheet" href="/css/moviePageSecond.css">
-
+    <script src = "./../controllers/moviePageController.js"></script>
+    <script src = "./../services/moviePageService.js"></script>
     <script>
         function getScore() {
             var score = document.querySelector('input[name="rate"]:checked').value;
             alert(score + 'was selected!')
-            
         }
+
+        function saveComment() {
+            var userComment = document.getElementById("feedback").value;
+            console.log(userComment);
+            addCommentsOfUser(userComment);
+        }
+
     </script>
 </head>
 <body>
@@ -45,11 +52,10 @@
                                     <div class="data">
                                         <table>
                                             <caption class = subTitles> <b> Players list:</b>  </caption>
-
                                             <thead>
                                             <tr>
                                                 <th> Player name</th>
-                                                <th > Birth year</th>
+                                                <th > Birth year    </th>
                                                 <th> Death year</th>
                                             </tr>
                                             </thead>
@@ -75,10 +81,11 @@
 
                                         </p>
 
-                                        <form action="submit-feedback.php" method="post">
+                                        <form action="submit-feedback.php" method="post" >
                                             <textarea id="feedback" name="feedback" placeholder="leave your comment here..." style="height:200px; width : 300px"></textarea><br>
+                                            <button  type="submit" form="form1" value="submit" onclick="saveComment()">Submit</button>
 
-                                            <input type="submit" value="Submit">
+<!--                                            <input type="submit"  value="Submit">&ndash;&gt;-->
                                         </form>
                                     </div>
                                     <h4> Please rate me: </h4>
@@ -117,10 +124,10 @@
                                 <td>
                                     <div>
                                    <h4 class = subTitles> Comments: </h4>
+
+
                                     </div>
                                 </td>
-
-
                             </tr>
                         </table>
                     </form>
