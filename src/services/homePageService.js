@@ -2,7 +2,6 @@ import DBConnection from "./../configs/DBConnection";
 import bcrypt from "bcryptjs";
 
 let findMovieByName = (str) => {
-    console.log(str);
     const findMovieByName = "SELECT id,name, movieid FROM movie WHERE name LIKE '% "+
                             str+" %' OR name LIKE '% "+
                             str+"' OR name LIKE '"+
@@ -49,10 +48,7 @@ let getBestPlayer = (str) => {
     const myArray = str.split(",");
     var name1 = myArray[0];
     var name2 = myArray[1];
-    console.log(name1);
-    console.log(name2);
     const findBestPlayer = "SELECT playerid, AVG(averagerating) as playerrating FROM knownfor JOIN ratingtable WHERE knownfor.movieid = ratingtable.movieid and (playerid= '"+name1+"' or playerid='"+name2+"') GROUP BY (playerid);"
-    console.log(findBestPlayer);
     return new Promise((resolve, reject) => {
         try {
             DBConnection.query(
@@ -73,7 +69,6 @@ let getBestPlayer = (str) => {
 
 
 let highestGenre = (str) => {
-    console.log(str);
     const findHighestGenre = "SELECT averagerating, name FROM dbexample.movie JOIN dbexample.ratingtable WHERE dbexample.movie.movieid = dbexample.ratingtable.movieid and genre LIKE '%"+str+"%' ORDER BY averagerating DESC LIMIT 1;"
     return new Promise((resolve, reject) => {
         try {

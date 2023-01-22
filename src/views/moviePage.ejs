@@ -15,27 +15,12 @@
 </head>
 <body>
 <br>
-<div class="box">
-    <a href="#divOne" class="button">Click Here</a>
-</div>
-<div class="overlay" id="divOne">
-    <div class="wrapper">
-        <a href="#" class="close">&times;</a>
-        <div class="content">
-            <div class="content">
-                <div class="container">
-                    <form>
                         <center>
-
                            <br><br> <h1 style="font-size: 100px; color: Red; font-family: 'Tahoma', Times, serif" ><%=movieName.name %></h1><br>
                             <h4 style="font-size: 25px;  font-family: 'Tahoma', Times, serif"> genre: <%=movieName.genre%></h4>
                         </center>
 
-                        <img align="left" src="https://storage.googleapis.com/afs-prod/media/e53811360eed4b8ba26b5f635d703a7c/3000.jpeg
-" alt="" width="250" height="250">
-                        <table style="width: 100%">
-                            <tr>
-                                <td style="vertical-align: top;">
+                        <img align="left" src="https://storage.googleapis.com/afs-prod/media/e53811360eed4b8ba26b5f635d703a7c/3000.jpeg" alt="" width="250" height="250">
                                     <div class="data">
                                         <table>
                                             <caption class = subTitles> <b> Players list:</b>  </caption>
@@ -68,8 +53,9 @@
 
                                         </p>
 
-                                        <form action="/submit-feedback/<%=movieId%>" method="POST" >
+                                        <form action="/moviepage/<%=movieId%>" method="POST" >
                                             <input  id="feedback" name="feedback" placeholder="leave your comment here..." style="height:200px; width : 300px"><br>
+                                            <h4> Please rate me: </h4>
                                             <div class="rate" onclick="getScore()">
                                                 <input type="radio" id="star10" name="rate" value="10" />
                                                 <label for="star10" title="text">10 stars</label>
@@ -93,7 +79,7 @@
                                                 <label for="star1" title="text">1 star</label>
                                             </div>
                                             <input name="hiddenRating" type="hidden" value="0" id="hiddenRating"/>
-                                            <button  type="submit"  value="submit" >Submit</button>
+                                            <button type="submit" value="submit">Submit</button>
                                         </form>
                                         <script>
                                             function getScore() {
@@ -102,38 +88,27 @@
                                                 console.log(  document.getElementById("hiddenRating"))
                                                 document.getElementById("hiddenRating").value  = score;
                                             }
-
-                                            function saveComment() {
-                                                var userComment = document.getElementById("feedback").value;
-                                                console.log(userComment);
-                                                getUserComment(userComment);
-                                            }
                                         </script>
                                     </div>
-                                    <h4> Please rate me: </h4>
+                                    <div>
+                                        <h3>comments:</h3>
+                                        <ul>
+                                            <% comments.forEach(function(comment) { %>
+                                                <li>
+                                                    <h5>UserID - <%= comment.userid %></h5>
+                                                    <h5>comment:</h5>
+                                                    <%= comment.comment %>
+
+                                                </li>
+                                            <% }) %>
+                                        </ul>
+                                    </div>
 
                                     <!-- <form method="post" action="/moviepage/<%=movieId%>"> -->
 <!--                                    <form onsubmit="getScore()">-->
 <!--                                        <button class="btnS" type="submit" style="font-size:16px"><i class="fa fa-check"></i></button>-->
 <!--                                    </form>-->
                                     <button class="btnD" onclick="window.location.href='deleteRate'" style="font-size:16px"><i class="fa far fa-trash-alt"></i></button>
-
-
-                                </td>
-
-                                <td>
-                                    <div>
-                                   <h4 class = subTitles> Comments: </h4>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 </body>

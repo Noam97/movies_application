@@ -3,7 +3,6 @@ import DBConnection from "./../configs/DBConnection";
 
 
 let addRatingOfUser = (str) => {
-    console.log(str);
     const addRating = "INSERT INTO dbexample.rating (rate, Movie_ID) VALUES (7, 3);"
     return new Promise((resolve, reject) => {
         try {
@@ -28,8 +27,7 @@ let getMovieInfo = (id) => {
     const playersInMovie = "SELECT name, birthyear, deathyear FROM player JOIN knownfor WHERE player.playerid = knownfor.playerid and knownfor.movieid = ? "
     const movieName = "SELECT name, genre, movieid FROM movie WHERE movie.movieid = ?"
     const movieInfo = "SELECT averagerating, numvotes FROM ratingtable WHERE ratingtable.movieid = ? "
-    const comments = "SELECT comment FROM rating WHERE rating.movieid = ?"
-    console.log(id)
+    const comments = "SELECT comment, userid FROM rating WHERE rating.movieid = ?"
     let playersPromise = new Promise((resolve, reject) => {
         try {
             DBConnection.query(
@@ -91,10 +89,7 @@ let getMovieInfo = (id) => {
                         console.log(err)
                         reject(err)
                     }
-                    if (rows == null || rows.length == 0)
-                        resolve(null)
-                    else
-                        resolve(rows[0]);
+                    resolve(rows)
                 }
             );
         } catch (err) {
@@ -111,20 +106,132 @@ let getMovieInfo = (id) => {
 
 
 
-let addCommentsOfUser = (comment) => {
-    console.log(comment)
-    return new Promise(async (resolve, reject) => {
-        DBConnection.query(
-            ' INSERT INTO rating set ? ', comment,
-            function (err, result) {
-                if (err) {
-                    console.log("Error ", err)
-                    reject(false)
+let addCommentsOfUser = async (userId, rating, comment, movieId) => {
+    let select_user_rating_promise = new Promise(async (resolve, reject) => {
+        try {
+            DBConnection.query(
+                'SELECT rate FROM rating WHERE userid = ? AND movieid = ?',
+                [userId, movieId],
+                function (err, result) {
+                    if (err) {
+                        console.log("Error ", err)
+                        reject(false)
+                    }
+                    // if there was a vote beforehand -
+                    if (result && result.length > 0) resolve(result[0].rate) // there was a vote by the user - return true
+                    else resolve(null) // there wasn't a vote by the user - return false
                 }
-                resolve("Create a new comment successful");
-            }
-        );
+            );
+        } catch (err) {
+            console.log(err)
+            reject(err);
+        }
     });
+
+    // If received a row -The USER ALREADY VOTED. remove it. in any case, change averagerating accordingly.
+
+    let oldVal = await select_user_rating_promise
+
+    // Already voted previously :
+    if (oldVal !== null) {
+        let update_rating_promise = new Promise(async (resolve, reject) => {
+            try {
+                DBConnection.query(
+                    'UPDATE rating SET rate = ?, comment = ? WHERE userid = ? and movieid = ?',
+                    [rating, comment, userId, movieId],
+                    function (err, result) {
+                        if (err) {
+                            console.log("Error ", err)
+                            reject(false)
+                        }
+                        resolve(true)
+
+                    }
+                );
+            } catch (err) {
+                console.log(err)
+                reject(err);
+            }
+        });
+        let newVal = rating
+        var vote_adder = new Promise(async (resolve, reject) => {
+            try {
+                DBConnection.query(
+                    'UPDATE ratingtable SET averagerating = (((averagerating * numvotes) - ? + ? ) / numvotes) WHERE movieid = ?',
+                    [oldVal, newVal, movieId],
+                    function (err, result) {
+                        if (err) {
+                            console.log("Error ", err)
+                            reject(false)
+                        }
+                        resolve(true);
+                    }
+                );
+            } catch (err) {
+                console.log(err)
+                reject(err);
+            }
+        });
+
+    } else {
+        let insert_promise = new Promise(async (resolve, reject) => {
+            try {
+                DBConnection.query(
+                    'INSERT INTO rating (userid, movieid, rate, comment) VALUES(?, ?, ?, ?)',
+                    [userId, movieId, rating, comment],
+                    function (err, result) {
+                        if (err) {
+                            console.log("Error ", err)
+                            reject(false)
+                        }
+                        resolve(true);
+                    }
+                );
+            } catch (err) {
+                console.log(err)
+                reject(err);
+            }
+        });
+        var vote_adder = new Promise(async (resolve, reject) => {
+            try {
+                DBConnection.query(
+                    'UPDATE ratingtable SET averagerating = (((averagerating * numvotes) + ?) / (numvotes + 1)) , numvotes = numvotes + 1 WHERE movieid = ?',
+                    [rating, movieId],
+                    function (err, result) {
+                        if (err) {
+                            console.log("Error ", err)
+                            reject(false)
+                        }
+                        resolve(true);
+                    }
+                );
+            } catch (err) {
+                console.log(err)
+                reject(err);
+            }
+        });
+    }
+    return await vote_adder
+
+    // let insert_promise = new Promise(async (resolve, reject) => {
+    //     try {
+    //         DBConnection.query(
+    //             'INSERT INTO rating (userid, movieid, rate, comment) VALUES(?, ?, ?, ?) ON DUPLICATE KEY UPDATE rate = ?, comment = ?',
+    //             [userId, movieId, rating, comment, rating, comment],
+    //             function (err, result) {
+    //                 if (err) {
+    //                     console.log("Error ", err)
+    //                     reject(false)
+    //                 }
+    //                 resolve("Created a new comment successfully.");
+    //             }
+    //         );
+    //     } catch (err) {
+    //         console.log(err)
+    //         reject(err);
+    //     }
+    // });
+    // return insert_promise
 }
 
 
