@@ -33,6 +33,8 @@ let initWebRoutes = (app) => {
 
     router.post("/getBestPlayer", loginController.checkLoggedIn, homePageController.getBestPlayer);
 
+    router.get("/compare", loginController.checkLoggedIn, homePageController.comparePlayers)
+
     router.post("/highestGenre", loginController.checkLoggedIn, homePageController.highestGenre);
 
     router.get("/moviepage/:movieid",loginController.checkLoggedIn, moviePageController.getMovieDetails);

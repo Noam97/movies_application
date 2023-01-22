@@ -22,16 +22,7 @@
 <%var bestplayer;%>
 <%var highestgenre;%>
     <body>
-        <!-- <script>
-            function myFunction() {
-              var x = document.getElementById("namestable");
-              if (x.style.display === "none") {
-                x.style.display = "block";
-              } else {
-                x.style.display = "none";
-              }
-            }
-        </script> -->
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <form method="POST" action="/logout">
                 <button type="submit" class="btn btn-dark">Log out</button>
@@ -65,7 +56,7 @@
                         <!-- <nav class="navbar navbar-light bg-light"> -->
                             <form class="form-inline" method="POST" action="/searchByName">
                                 <input id="searchname" name="searchname" class="form-control mr-sm-2" type="search" placeholder="type any movie name..." aria-label="Search">
-                                <button class="btn btn-danger my-2 my-sm-0" type="submit" onclick="myFunction()">
+                                <button class="btn btn-danger my-2 my-sm-0" type="submit">
                                     Search
                                 </button>
                             </form>
@@ -118,13 +109,31 @@
                         </table>
                     <% } %>
 
-                    <% if (bestplayer != null) { %>
-                        <h3><p class="text-white">Compare 2 Players</p></h3>
-                        <form class="form-inline" method="POST" action="/getBestPlayer">
-                            <input id="playernames" name="playernames" class="form-control mr-sm-2" type="search" placeholder="type 2 players..." aria-label="Search">
-                            <button class="btn btn-danger my-2 my-sm-0" type="submit">Compare</button>
-                        </form>
+                    <h3><p class="text-white">Compare 2 players:</p></h3>
+                    <div style="display:flex; flex-direction: row">
+                    <form class="form-inline" method="POST" action="/getBestPlayer">
+                        <div style="display: flex; flex-direction: column">
+                            <div>
+                                <label for="player1" style="font-size: x-large; background: rgb(31, 36, 39); color: white"><b>First player : </b></label>
+                        <input id="player1" name="player1" class="form-control mr-sm-2" placeholder="type any player name...">
+                            </div>
+                            <div>
+                                <label for="player2" style="font-size: x-large; background: rgb(31, 36, 39); color: white"><b>Second player : </b></label>
+                        <input id="player2" name="player2" class="form-control mr-sm-2" placeholder="type any player name...">
+                            </div>
+                        </div>
+                        <button class="btn btn-danger my-2 my-sm-0" type="submit">
+                            Compare!
+                        </button>
+                    </form>
+                    <% if (typeof player_better != "undefined" && player_better) { %>
+                        <div style="float:right;">
+                            <h3 style="background: rgb(31, 36, 39); color: white">Average film ratings of <b><%= player_better %></b> are better than <b><%= player_worse %></b> film ratings.<br>Their scores :
+                                <br><%= player_better %> has average stars of <%= player_better_rating%><br><%=player_worse%>,
+                                has average stars of <%= player_worse_rating %></h3>
+                        </div>
                     <% } %>
+                    </div>
 
 
                     
