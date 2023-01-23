@@ -35,7 +35,7 @@ except mysql.connector.Error as err:
 # cursor.execute("CREATE TABLE `movie` (\
 #   `id` int NOT NULL AUTO_INCREMENT,\
 #   `movieid` varchar(45) NOT NULL,\
-#   `name` varchar(45) NOT NULL,\
+#   `name` varchar(255) NOT NULL,\
 #   `genre` varchar(45) DEFAULT NULL,\
 #   `rating` varchar(45) DEFAULT NULL,\
 #   PRIMARY KEY (`id`)\
@@ -44,21 +44,20 @@ except mysql.connector.Error as err:
 # cursor.execute("CREATE TABLE `player` (\
 #   `id` int NOT NULL AUTO_INCREMENT,\
 #   `playerid` varchar(45) NOT NULL,\
-#   `name` varchar(45) NOT NULL,\
+#   `name` varchar(255) NOT NULL,\
 #   `birthyear` varchar(45) DEFAULT NULL,\
 #   `deathyear` varchar(45) DEFAULT NULL,\
 #   PRIMARY KEY (`id`),\
 #   UNIQUE KEY `id_UNIQUE` (`id`)\
 # ) ENGINE=InnoDB AUTO_INCREMENT=905979 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci")
 
-# cursor.execute("CREATE TABLE `rating` (\
-#   `id` int NOT NULL AUTO_INCREMENT,\
-#   `rate` int NOT NULL,\
-#   `comment` varchar(45) DEFAULT NULL,\
-#   `Movie_ID` int NOT NULL,\
-#   `userid` int DEFAULT NULL,\
-#   PRIMARY KEY (`id`)\
-# ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci")
+# cursor.execute("CREATE TABLE `rating` (
+#                     `userid` int NOT NULL,\
+#                     `movieid` varchar(45) NOT NULL,\
+#                     `rate` decimal(10,0) NOT NULL,\
+#                     `comment` varchar(800) DEFAULT NULL,\
+#                     PRIMARY KEY (`userid`,`movieid`)\
+#                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
 # cursor.execute("CREATE TABLE `users` (\
