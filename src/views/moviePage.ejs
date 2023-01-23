@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="/css/moviePageSecond.css">
 
 
+
 </head>
 <body>
+<div style="background-image: url('https://thumbs.dreamstime.com/z/grunge-movie-background-17100508.jpg')">
 <br>
                         <center>
                            <br><br> <h1 style="font-size: 100px; color: Red; font-family: 'Tahoma', Times, serif" ><%=movieName.name %></h1><br>
@@ -84,15 +86,13 @@
                                         <script>
                                             function getScore() {
                                                 var score = document.querySelector('input[name="rate"]:checked').value;
-                                                alert(score + 'was selected!')
-                                                console.log(  document.getElementById("hiddenRating"))
                                                 document.getElementById("hiddenRating").value  = score;
                                             }
                                         </script>
                                     </div>
 
                                     <div style="padding-left: 50px; padding-top: 50px">
-                                        <h3>comments:</h3>
+                                        <h3 class = subTitles>Comments:</h3>
                                         <ul>
                                             <% comments.forEach(function(comment) { %>
                                                 <li>
